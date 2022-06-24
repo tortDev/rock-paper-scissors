@@ -6,7 +6,7 @@
 // log the score and a winner is chosen after 5 rounds have been won by that player.
 
 
-// Generates a random number from 0-2 each one is assigned one of the 3 choices from the game and logged to the console.
+// Generates a random number from 0-2 each one is assigned one of the 3 choices from the game and saved
 function computerPlay() {
     const input = Math.floor(Math.random() * 3);
     
@@ -25,10 +25,22 @@ function computerPlay() {
 }
 
 
-// takes the users input and saves it - want to add input restrictions currently will log any value
+// takes the users input and saves it - is case insensitve.
 function userPlay() {
     let input = prompt("Rock, Paper, or Scissors")
-    let userChoice = input.toLowerCase()
-    return userChoice 
+    let userChoice = input.charAt(0).toUpperCase() + input.toLowerCase().slice(1)
+    return userChoice;
 }
-    
+
+
+// uses my 2 previous funtions and compares the results. Returns the winner.
+function round (user , computer) {
+    console.log("You chose: " + user)
+    console.log("Computer chose: " + computer)
+    if (user == "Rock" && computer == "Paper") {
+        let outcome = "Paper beats rock. You lose!"
+        return outcome
+    }
+}
+
+console.log(round(userPlay(),computerPlay()))   
