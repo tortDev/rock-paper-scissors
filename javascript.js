@@ -8,23 +8,27 @@
 
 // Generates a random number from 0-2 each one is assigned one of the 3 choices from the game and logged to the console.
 function computerPlay() {
-    let input = Math.floor(Math.random() * 3);
+    const input = Math.floor(Math.random() * 3);
     
     if (input == 0 ) {
         let computerChoice = "Rock"
-        console.log(computerChoice)
+         return computerChoice
     }
     else if ( input == 1 ) {
         let computerChoice = "Paper"
-        console.log(computerChoice)
+         return computerChoice
     }
     else {
         let computerChoice = "Scissors"
-        console.log(computerChoice)
+         return computerChoice
     }
-    
-    
 }
 
 
+// takes the users input and saves it - want to add input restrictions currently will log any value
+function userPlay() {
+    let input = prompt("Rock, Paper, or Scissors")
+    let userChoice = input.toLowerCase()
+    return userChoice 
+}
     
