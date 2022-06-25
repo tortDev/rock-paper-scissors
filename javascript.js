@@ -35,12 +35,39 @@ function userPlay() {
 
 // uses my 2 previous funtions and compares the results. Returns the winner.
 function round (user , computer) {
+
+// want to rewrite this portion so the the function instead returns these instead of logigng them. just a baseline.
     console.log("You chose: " + user)
     console.log("Computer chose: " + computer)
+    // loss conditions
     if (user == "Rock" && computer == "Paper") {
-        let outcome = "Paper beats rock. You lose!"
+        let outcome = "Paper covers rock. You lose!"
         return outcome
     }
+    if (user == "Paper" && computer == "Scissors") {
+        let outcome = "Scissors cuts paper. You lose!"
+        return outcome
+    }
+    if (user == "Scissors" && computer == "Rock") {
+        let outcome = "Rock smashes scissors. You lose!"
+        return outcome
+    }
+    // win conditions
+    if (user == "Rock" && computer == "Scissors") {
+        let outcome = "Rock smashes scissors. You win!"
+        return outcome
+    }
+    if (user == "Paper" && computer == "Rock") {
+        let outcome = "Paper covers rock. You win!"
+        return outcome
+    }
+    if (user == "Scissors" && computer == "Paper") {
+        let outcome = "Scissors cut paper. You win!"
+        return outcome
+    }
+    // tie conditions - WIP
+    
+    
 }
 
 console.log(round(userPlay(),computerPlay()))   
