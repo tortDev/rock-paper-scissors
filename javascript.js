@@ -35,39 +35,81 @@ function userPlay() {
 
 // uses my 2 previous funtions and compares the results. Returns the winner.
 function round (user , computer) {
-
-// want to rewrite this portion so the the function instead returns these instead of logigng them. just a baseline.
-    console.log("You chose: " + user)
-    console.log("Computer chose: " + computer)
+    let userOutput = "You chose: " + user
+    let computerOutput = "Computer chose: " + computer
     // loss conditions
     if (user == "Rock" && computer == "Paper") {
         let outcome = "Paper covers rock. You lose!"
-        return outcome
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     }
     if (user == "Paper" && computer == "Scissors") {
         let outcome = "Scissors cuts paper. You lose!"
-        return outcome
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     }
     if (user == "Scissors" && computer == "Rock") {
         let outcome = "Rock smashes scissors. You lose!"
-        return outcome
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     }
     // win conditions
     if (user == "Rock" && computer == "Scissors") {
         let outcome = "Rock smashes scissors. You win!"
-        return outcome
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     }
     if (user == "Paper" && computer == "Rock") {
         let outcome = "Paper covers rock. You win!"
-        return outcome
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     }
     if (user == "Scissors" && computer == "Paper") {
         let outcome = "Scissors cut paper. You win!"
-        return outcome
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     }
-    // tie conditions - WIP
+    // tie conditions 
+    if (user == "Rock" && computer == "Rock") {
+        let outcome = "Draw!"
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     
+    }
+    if (user == "Paper" && computer == "Paper") {
+        let outcome = "Draw!"
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
     
+    }
+    if (user == "Scissors" && computer == "Scissors") {
+        let outcome = "Draw!"
+        return `${userOutput}\
+        ${computerOutput}\
+        ${outcome}`
+    
+    }
+    else {
+        return "Not a valid input, play again"
+    }
 }
 
-console.log(round(userPlay(),computerPlay()))   
+// currently plays 5 rounds and prints each one to the console. need to add score logging and win condition for each player
+
+function game(){
+    for (let i = 0; i < 5; i++) {
+       let outcome = round(userPlay(),computerPlay())
+       console.log(outcome)
+
+
+     }
+}
+game()
