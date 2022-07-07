@@ -5,7 +5,9 @@
 // get 1 round working before moving to next step
 // log the score and a winner is chosen after 5 rounds have been won by that player.
 
-
+let userScore = 0
+let computerScore = 0
+let draws = 0
 // Generates a random number from 0-2 each one is assigned one of the 3 choices from the game and saved
 function computerPlay() {
     const input = Math.floor(Math.random() * 3);
@@ -75,41 +77,48 @@ function round (user , computer) {
         ${computerOutput}\
         ${outcome}`
     }
-    // tie conditions 
-    if (user == "Rock" && computer == "Rock") {
+    // tie condition
+    if (user == computer) {
         let outcome = "Draw!"
         return `${userOutput}\
         ${computerOutput}\
         ${outcome}`
-    
-    }
-    if (user == "Paper" && computer == "Paper") {
-        let outcome = "Draw!"
-        return `${userOutput}\
-        ${computerOutput}\
-        ${outcome}`
-    
-    }
-    if (user == "Scissors" && computer == "Scissors") {
-        let outcome = "Draw!"
-        return `${userOutput}\
-        ${computerOutput}\
-        ${outcome}`
-    
     }
     else {
-        return "Not a valid input, play again"
+        alert("Please type Rock, Paper, or Scissors");
+        round(userPlay(),computerPlay())
     }
 }
 
-// currently plays 5 rounds and prints each one to the console. need to add score logging and win condition for each player
+// Uses my 2 previous functions in a loop to play a round of RPS and logs the winner. When the max score is met the loop breaks and prints our game results to the console.
+
 
 function game(){
-    for (let i = 0; i < 5; i++) {
-       let outcome = round(userPlay(),computerPlay())
-       console.log(outcome)
-
-
-     }
+    for (let i = 0; i < 1000; i++) {
+        let outcome = round(userPlay(),computerPlay())
+        console.log(outcome)
+       if (outcome.indexOf('win') > -1) {   
+        userScore++
+        console.log(`Score - Player : ${userScore}\
+        Computer : ${computerScore}`);
+        }
+        else if (outcome.indexOf('Draw') > -1){
+        draws++;
+        }
+        else {
+            computerScore++
+            console.log(`Score - Player : ${userScore}\
+        Computer : ${computerScore}`);
+        }
+        if (userScore === 5) {
+            console.log("Congrats! You win!");
+            break;
+        }
+        if (computerScore === 5) {
+            console.log("You lost, better luck next time!");
+            break;
+        }
+        
+    }
 }
 game()
